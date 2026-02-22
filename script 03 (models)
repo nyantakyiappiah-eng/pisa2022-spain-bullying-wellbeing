@@ -1,0 +1,30 @@
+# 03_models.R
+
+library(dplyr)
+
+# 1. Load scales data
+pisa_spain_scales <- readRDS("data/processed/pisa2022_spain_scales.rds")
+
+# 2. Modelling dataset
+dat <- pisa_spain_scales %>%
+  select(ST016Q01NA, belong_mean, bully_mean,
+         teachsup_mean, ESCS, W_FSTUWT) %>%
+  filter(complete.cases(.))
+
+# 3. Model 1
+model1 <- lm(
+  ST016Q01NA ~ bully_mean + belong_mean + ESCS,
+  data = dat,
+  weights = W_FSTUWT
+)
+
+# 4. Model 2
+model2 <- lm(
+  ST016Q01NA ~ bully_mean * teachsup_mean + belong_mean + ESCS,
+  data = dat,
+  weights = W_FSTUWT
+)
+
+# 5. Show results
+summary(model1)
+summary(model2)
