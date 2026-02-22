@@ -1,1 +1,35 @@
+# 01_load_pisa_spain.R
+
+library(haven)
+library(dplyr)
+
+# 1. Read full PISA student file
+pisa_stu <- read_sav("data/raw/CY08MSP_STU_QQQ.SAV")
+
+# 2. Keep only Spain
+pisa_spain <- pisa_stu %>%
+  filter(CNT == "ESP")
+
+# 3. Select key variables
+vars_keep <- c(
+  "CNT","CNTSCHID","CNTSTUID",
+  "ST016Q01NA",
+  "ST034Q01TA","ST034Q02TA","ST034Q03TA",
+  "ST034Q04TA","ST034Q05TA","ST034Q06TA",
+  "ST038Q03NA","ST038Q04NA","ST038Q05NA",
+  "ST038Q06NA","ST038Q07NA","ST038Q08NA",
+  "ST038Q09JA","ST038Q10JA","ST038Q11JA",
+  "ST267Q01JA","ST267Q02JA","ST267Q03JA",
+  "ST267Q04JA","ST267Q05JA","ST267Q06JA",
+  "ST267Q07JA","ST267Q08JA",
+  "ST265Q01JA","ST265Q02JA","ST265Q03JA","ST265Q04JA",
+  "ESCS","ST004D01T","W_FSTUWT"
+)
+
+pisa_spain_small <- pisa_spain %>%
+  select(any_of(vars_keep))
+
+# 4. Save for later scripts
+dir.create("data/processed", showWarnings = FALSE)
+saveRDS(pisa_spain_small, "data/processed/pisa2022_spain_small.rds")
 
