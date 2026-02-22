@@ -1,2 +1,13 @@
-raw
-processed
+# Data
+
+This project uses the OECD PISA 2022 student file:
+
+- File required: `CY08MSP_STU_QQQ.SAV`
+- Source: OECD PISA 2022 database (https://www.oecd.org/pisa/data/)
+
+Instructions:
+1. Download `CY08MSP_STU_QQQ.SAV` from the OECD PISA 2022 data portal.
+2. Create the folder `data/raw/` if it does not exist.
+3. Place `CY08MSP_STU_QQQ.SAV` in `data/raw/`.
+4. Do NOT commit the `.SAV` file to this repository.
+
