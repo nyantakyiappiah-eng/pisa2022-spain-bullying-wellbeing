@@ -1,0 +1,18 @@
+# 02_build_scales.R
+
+library(dplyr)
+
+# 1. Load Spain subset
+pisa_spain_small <- readRDS("data/processed/pisa2022_spain_small.rds")
+
+# 2. Build scales
+pisa_spain_scales <- pisa_spain_small %>%
+  mutate(
+    belong_mean = rowMeans(select(., starts_with("ST034Q0")), na.rm = TRUE),
+    bully_mean  = rowMeans(select(., starts_with("ST038Q0")), na.rm = TRUE),
+    teachsup_mean = rowMeans(select(., starts_with("ST267Q0")), na.rm = TRUE),
+    safety_mean = rowMeans(select(., starts_with("ST265Q0")), na.rm = TRUE)
+  )
+
+# 3. Save
+saveRDS(pisa_spain_scales, "data/processed/pisa2022_spain_scales.rds")
