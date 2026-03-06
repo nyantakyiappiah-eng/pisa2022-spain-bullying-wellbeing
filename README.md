@@ -1,7 +1,6 @@
 # Bullying, Belonging, Teacher Support, and Life Satisfaction in PISA 2022 (Spain)
 
-Secondary analysis of PISA 2022 Spain student data on bullying, school belonging, teacher support, and life satisfaction for a Psychology, Society & Education manuscript.
-
+Secondary analysis of PISA 2022 Spain student data on bullying, school belonging, teacher support, and life satisfaction
 ## Key results
 
 - Higher bullying frequency is associated with lower student life satisfaction, adjusting for covariates.
